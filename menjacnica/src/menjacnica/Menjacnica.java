@@ -8,27 +8,25 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
+import sistemskeOperacije.SODodajValutu;
+import sistemskeOperacije.SOObrisiValutu;
+import sistemskeOperacije.SOSacuvajUFajl;
+import sistemskeOperacije.SOUcitajIzFajla;
+
 public class Menjacnica implements MenjacnicaInterface{
 	
 	private LinkedList<Valuta> kursnaLista = new LinkedList<Valuta>();
 
 	@Override
 	public void dodajValutu(Valuta valuta) {
-		if (valuta==null)
-			throw new RuntimeException("Valuta ne sme biti null");
 		
-		if (kursnaLista.contains(valuta))
-			throw new RuntimeException("Valuta je vec uneta u kursnu listu");
-		
-		kursnaLista.add(valuta);		
+		kursnaLista = SODodajValutu.izvrsi(valuta, kursnaLista);
 	}
 
 	@Override
 	public void obrisiValutu(Valuta valuta) {
-		if (!kursnaLista.contains(valuta))
-			throw new RuntimeException("Valuta ne postoji u kursnoj listi");
 		
-		kursnaLista.remove(valuta);
+		kursnaLista = SOObrisiValutu.izvrsi(valuta, kursnaLista);
 	}
 
 	@Override
@@ -46,30 +44,14 @@ public class Menjacnica implements MenjacnicaInterface{
 
 	@Override
 	public void ucitajIzFajla(String putanja) {
-		try{
-			ObjectInputStream in = new ObjectInputStream(
-					new BufferedInputStream(new FileInputStream(putanja)));
-			
-			kursnaLista = (LinkedList<Valuta>)(in.readObject());
-			
-			in.close();
-		}catch(Exception e){
-			throw new RuntimeException(e);
-		}
+		
+		kursnaLista = SOUcitajIzFajla.izvrsi(putanja, kursnaLista);		
 	}
 
 	@Override
 	public void sacuvajUFajl(String putanja) {
-		try{
-			ObjectOutputStream out = new ObjectOutputStream(
-					new BufferedOutputStream(new FileOutputStream(putanja)));
-			
-			out.writeObject(kursnaLista);
-			
-			out.close();
-		}catch(Exception e){
-			throw new RuntimeException(e);
-		}
+		
+		SOSacuvajUFajl.izvrsi(putanja, kursnaLista);
 	}
 
 	
