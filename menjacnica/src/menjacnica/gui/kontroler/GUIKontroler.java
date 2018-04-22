@@ -146,9 +146,9 @@ public class GUIKontroler {
 		
 			return "" + konacniIznos;
 		} catch (Exception e1) {
-		JOptionPane.showMessageDialog(gp, e1.getMessage(),
-				"Greska", JOptionPane.ERROR_MESSAGE);
-		return null;
+			JOptionPane.showMessageDialog(gp, e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
 	}
 
