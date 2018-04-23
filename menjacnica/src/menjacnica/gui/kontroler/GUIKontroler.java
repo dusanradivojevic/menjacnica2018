@@ -18,6 +18,7 @@ import menjacnica.gui.models.MenjacnicaTableModel;
 public class GUIKontroler {
 
 	public static MenjacnicaGUI gp;
+	public static GUIKontroler k;
 	public static Menjacnica m;
 
 	/**
@@ -30,6 +31,7 @@ public class GUIKontroler {
 					GUIKontroler.gp = new MenjacnicaGUI();
 					gp.setVisible(true);
 					m = new Menjacnica();
+			
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -38,7 +40,7 @@ public class GUIKontroler {
 	}
 
 	public static void prikaziDodajKursGUI() {
-		DodajKursGUI prozor = new DodajKursGUI(gp);
+		DodajKursGUI prozor = new DodajKursGUI(k);
 		prozor.setLocationRelativeTo(gp);
 		prozor.setVisible(true);
 	}
@@ -47,7 +49,7 @@ public class GUIKontroler {
 
 		if (table.getSelectedRow() != -1) {
 			MenjacnicaTableModel model = (MenjacnicaTableModel) (table.getModel());
-			ObrisiKursGUI prozor = new ObrisiKursGUI(gp, model.vratiValutu(table.getSelectedRow()));
+			ObrisiKursGUI prozor = new ObrisiKursGUI(k, model.vratiValutu(table.getSelectedRow()));
 			prozor.setLocationRelativeTo(gp);
 			prozor.setVisible(true);
 		}
@@ -57,7 +59,7 @@ public class GUIKontroler {
 		if (table.getSelectedRow() != -1) {
 			MenjacnicaTableModel model = (MenjacnicaTableModel)(table.getModel());
 			
-			IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(gp,
+			IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(k,
 					model.vratiValutu(table.getSelectedRow()));
 			
 			prozor.setLocationRelativeTo(gp);

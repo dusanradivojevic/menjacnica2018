@@ -43,13 +43,14 @@ public class ObrisiKursGUI extends JFrame {
 	private JCheckBox chckbxZaistaObrisiKurs;
 	private JLabel label;
 	
-	private MenjacnicaGUI glavniProzor;
+//	private MenjacnicaGUI glavniProzor;
+	private GUIKontroler glavniProzor;
 	private Valuta valuta;
 
 	/**
 	 * Create the frame.
 	 */
-	public ObrisiKursGUI(MenjacnicaGUI glavniProzor, Valuta valuta) {
+	public ObrisiKursGUI(GUIKontroler glavniProzor, Valuta valuta) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ObrisiKursGUI.class.getResource("/icons/Screenshot.png")));
 		setResizable(false);
 		setTitle("Obrisi kurs");
