@@ -20,13 +20,13 @@ public class Menjacnica implements MenjacnicaInterface{
 	@Override
 	public void dodajValutu(Valuta valuta) {
 		
-		kursnaLista = SODodajValutu.izvrsi(valuta, kursnaLista);
+		SODodajValutu.izvrsi(valuta, kursnaLista);
 	}
 
 	@Override
 	public void obrisiValutu(Valuta valuta) {
 		
-		kursnaLista = SOObrisiValutu.izvrsi(valuta, kursnaLista);
+		SOObrisiValutu.izvrsi(valuta, kursnaLista);
 	}
 
 	@Override
