@@ -18,7 +18,6 @@ import menjacnica.gui.models.MenjacnicaTableModel;
 public class GUIKontroler {
 
 	public static MenjacnicaGUI gp;
-	public static GUIKontroler k;
 	public static Menjacnica m;
 
 	/**
@@ -40,7 +39,7 @@ public class GUIKontroler {
 	}
 
 	public static void prikaziDodajKursGUI() {
-		DodajKursGUI prozor = new DodajKursGUI(k);
+		DodajKursGUI prozor = new DodajKursGUI();
 		prozor.setLocationRelativeTo(gp);
 		prozor.setVisible(true);
 	}
@@ -49,7 +48,7 @@ public class GUIKontroler {
 
 		if (table.getSelectedRow() != -1) {
 			MenjacnicaTableModel model = (MenjacnicaTableModel) (table.getModel());
-			ObrisiKursGUI prozor = new ObrisiKursGUI(k, model.vratiValutu(table.getSelectedRow()));
+			ObrisiKursGUI prozor = new ObrisiKursGUI(model.vratiValutu(table.getSelectedRow()));
 			prozor.setLocationRelativeTo(gp);
 			prozor.setVisible(true);
 		}
@@ -59,8 +58,7 @@ public class GUIKontroler {
 		if (table.getSelectedRow() != -1) {
 			MenjacnicaTableModel model = (MenjacnicaTableModel)(table.getModel());
 			
-			IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(k,
-					model.vratiValutu(table.getSelectedRow()));
+			IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(model.vratiValutu(table.getSelectedRow()));
 			
 			prozor.setLocationRelativeTo(gp);
 			prozor.setVisible(true);
@@ -120,7 +118,7 @@ public class GUIKontroler {
 			m.dodajValutu(valuta);
 
 			// Osvezavanje glavnog prozora
-			GUIKontroler.prikaziSveValute(gp.getTable());
+			prikaziSveValute(gp.getTable());
 			
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(gp, e1.getMessage(),
@@ -132,7 +130,7 @@ public class GUIKontroler {
 		try{
 			m.obrisiValutu(valuta);
 			
-			GUIKontroler.prikaziSveValute(gp.getTable());
+			prikaziSveValute(gp.getTable());
 			
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(gp, e1.getMessage(),

@@ -38,13 +38,13 @@ public class DodajKursGUI extends JFrame {
 	private JButton btnOdus;
 
 	//private MenjacnicaGUI glavniProzor;
-	private GUIKontroler glavniProzor;
+//	private GUIKontroler glavniProzor;
 	private JSpinner spinnerSifra;
 
 	/**
 	 * Create the frame.
 	 */
-	public DodajKursGUI(GUIKontroler glavniProzor) {
+	public DodajKursGUI() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DodajKursGUI.class.getResource("/icons/Screenshot.png")));
 		setResizable(false);
 		setTitle("Dodaj kurs");
@@ -70,7 +70,7 @@ public class DodajKursGUI extends JFrame {
 		contentPane.add(getBtnOdus());
 		
 		//podesavanje
-		this.glavniProzor = glavniProzor;
+	//	this.glavniProzor = glavniProzor;
 				
 	}
 
